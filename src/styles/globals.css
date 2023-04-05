@@ -1,0 +1,342 @@
+@import url('https://unpkg.com/aos@2.3.1/dist/aos.css');
+@import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+
+@font-face {
+  font-family: 'duplicate';
+  src: url(../font/DuplicateSans-Bold.ttf);
+}
+
+.global-btn-color {
+  background: linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%)
+}
+
+
+
+@font-face {
+  font-family: 'medium';
+  src: url(../font/DuplicateSans.ttf);
+}
+
+
+.mantine-Button-root {
+  color: whitesmoke !important;
+
+}
+:root {
+  --primary: #5138F6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.border-slice {
+  border: 1px solid;
+  border-image: linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%);
+  border-image-slice: 1;
+}
+
+
+.btn-grade {
+  background: linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%);
+  border-radius: 30px;
+
+}
+
+.btn-normal:hover  {
+  background: #f7f7f7 !important;
+}
+
+.foreon-select {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  gap: 10px;
+  width: 155px;
+  height: 52px;
+
+  background: #FFFFFF;
+  border: 1px solid #E6E1E6;
+  border-radius: 100px;
+  outline: none;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.foreon-input {
+
+  padding: 8px;
+  gap: 62px;
+  position: relative;
+  z-index: -1;
+  width: 250px;
+  height: 52px;
+  background: #FFFFFF;
+  border: 1px solid #E6E1E6;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+.line {
+  border-color: 'red';
+  padding: '3em';
+}
+
+.remove-link {
+  text-decoration: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.medium {
+  font-family: medium !important;
+}
+
+.duplicate {
+  font-family: duplicate !important;
+  font-weight: bold;
+}
+
+.works {
+  font-size: 45px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #79767a;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.sideItem {
+  background: rgba(255, 255, 255, 0.959);
+  color: white !important;
+  font-weight: 500;
+}
+
+.aly {
+  align-items: center;
+}
+
+/* 
+.mantine-Text-root {
+  color: #79767A;
+} */
+
+body {
+}
+
+.lap-text {
+  font-size: 20px;
+}
+
+.footer-text {
+  font-size: 32px;
+  font-weight: bold;
+  color: #cac5ca;
+}
+
+.tokenBg {
+  background: linear-gradient(
+    135deg,
+    rgba(129, 38, 230, 0.2) -1.33%,
+    rgba(210, 204, 241, 0.06) 47.36%,
+    rgba(230, 213, 234, 0.07) 95.53%
+  );
+  opacity: 0.9;
+}
+
+.tokenomics {
+  background: linear-gradient(
+    to top right,
+    rgba(129, 38, 230, 0.2) -1.33%,
+    rgba(210, 204, 241, 0.06) 47.36%,
+    rgba(230, 213, 234, 0.07) 95.53%
+  );
+  opacity: 0.9;
+}
+
+.titleSize {
+  font-size: 60px;
+}
+
+:root {
+  --primary: '#22005D';
+}
+
+.mobile-show {
+  display: none;
+}
+
+.gradientText {
+  background: linear-gradient(
+    135deg,
+    #00a9b7 -1.33%,
+    #4c32f2 47.36%,
+    #9f00be 95.53%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+body {
+  color: black !important;
+}
+
+.normalText {
+  font-size: 21px;
+}
+
+.black {
+  color: black !important ;
+}
+.mantine-11r41z1 .mantine-u9j1uq{
+  max-width: 86rem;
+}
+/* .mantine-Container-root.mantine-u9j1uq{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+
+@media screen and (max-width: 900px) {
+  .desktop-show {
+    display: none;
+  }
+
+  .mobile-show {
+    display: block;
+  }
+
+  .footer-image {
+    margin: 2em;
+  }
+
+  .footer-li {
+    padding: 1em 0;
+  }
+
+  .footer-text {
+    font-size: 25px;
+    font-weight: bold;
+    color: #cac5ca;
+  }
+
+  .aly {
+    align-items: flex-start;
+    gap: 1.6em;
+  }
+
+  .hr {
+    display: none;
+  }
+
+  .lap-text {
+    font-size: 18px;
+  }
+
+  .normalText {
+    font-size: 16px;
+  }
+
+  .heroHeader {
+    font-size: 30px;
+    padding-right: 2em;
+    line-height: 1.5em;
+    margin-top: 0.5em;
+  }
+
+  .heroFlex {
+    width: 100%;
+  }
+
+  .titleSize {
+    font-size: 35px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .heroHeader {
+    font-size: 72px;
+  }
+
+  .head-description {
+    font-size: 28px !important;
+    line-heigh: 41.6px;
+    font-weight: 300;
+  }
+
+  .heroFlex {
+    width: 50%;
+  }
+
+  .Para {
+    font-size: 25px;
+  }
+}
+
+/* for large screens  */
+
+.dangle {
+  animation: dangle 1.2s infinite;
+}
+
+/* dangle image up and down infinitly in keyframe */
+/* //make css animation */
+@keyframes dangle {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .heroHeader {
+    font-size: 4.5em;
+  }
+
+  .bigImage {
+    width: 550px;
+    height: 35em;
+  }
+
+  .foreon-left {
+    width: 80vw;
+  }
+}
+
+@media screen and (min-width: 2200px) {
+  .heroHeader {
+    font-size: 4.5em;
+  }
+
+  .bigImage {
+    width: 650px;
+    height: 70em;
+  }
+
+  .foreon-left {
+  }
+
+  .foreon-left {
+  }
+}
