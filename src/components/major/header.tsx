@@ -112,10 +112,7 @@ const Header = ({handleEvent}: any) => {
                 }
               }>
                 <Flex align={'center'} gap={'1em'}>
-                  <Button w={'145px'} h={'48px'}
-                          radius={'16px'} onClick={handleEvent}
-                          bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%)'}><Text
-                    color={'#fff'}>Connect Wallet</Text></Button>
+                  
                   <Box>
                     {!sidebarOpen ? (
                       <FaBars

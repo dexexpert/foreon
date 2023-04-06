@@ -1,7 +1,9 @@
-import {Box, Text, Flex} from '@mantine/core';
+import {useState, useRef, useEffect} from 'react';
+import {Box, Text, Flex,Button, Image} from '@mantine/core';
 import ContainerLayout from "@/layouts/containerLayout";
 import {useMediaQuery} from "@mantine/hooks";
-import {BsStar} from 'react-icons/bs';
+import {BsStar,BsFillCheckCircleFill,BsShare} from 'react-icons/bs';
+
 
 const liquidityIcon = <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="0.5" y="0.5" width="29" height="29" fill="white"/>
@@ -19,8 +21,12 @@ const liquidityIcon = <svg width="30" height="30" viewBox="0 0 30 30" fill="none
 </svg>
 
 const MarketViewHeader = () => {
-
+  const [watchlist, setWatchlist] = useState(false);
   const matches = useMediaQuery('(max-width: 40em)', true, {getInitialValueInEffect: false});
+  const changeState = () => {
+    setWatchlist(true);
+  }
+
 
 
   return (
@@ -86,7 +92,7 @@ const MarketViewHeader = () => {
           </Flex>
 
           <Flex gap={'0.5em'}>
-            <Box sx={
+            {/* <Box sx={
               {
                 display: 'flex',
                 alignItems: 'center',
@@ -99,25 +105,45 @@ const MarketViewHeader = () => {
               }
             }>
               <BsStar/>
-              <Text color={'#22005D'}>Add to Watchlist </Text>
-            </Box>
+              <Text color={'#22005D'}> </Text>
+            </Box> */}
+            <Button 
+                onClick={changeState}
+                leftIcon={watchlist ? <BsFillCheckCircleFill fill='#5138F6'/> : <BsStar/>}
+                className={'btnColor'}
+                  sx={
+                      {
+                          borderRadius:'10px',
+                          color: 'black !important',
+                          fontSize: '16px',
+                          overflow:'inherit !important'
+                      }
+                  }
+
+                px={'1.5em'} py={'1.5em'} 
+                variant="default">
+              
+              <Text color={'#22005D'}>Add to Watchlist</Text>
+            </Button>
+
+            <Button 
+                className={'btnColor'}
+                  sx={
+                      {
+                          borderRadius:'10px',
+                          color: 'black !important',
+                          fontSize: '16px',
+                          // overflow:'inherit !important'
+                      }
+                  }
+
+                px={'1.5em'} py={'1.5em'} variant="default">
+              <BsShare/>
+              
+            </Button>
 
 
-            <Box sx={
-              {
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5em',
-                width: 'fit-content',
-                border: '1px solid #938F94',
-                padding: '0.5em',
-                background: 'white',
-                borderRadius: '0.5em'
-              }
-            }>
-              <BsStar/>
-              <Text color={'#22005D'}>Share</Text>
-            </Box>
+            
 
           </Flex>
 

@@ -35,6 +35,20 @@ html {
   border-image: linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%);
   border-image-slice: 1;
 }
+/* .btnColor{
+  color: black;
+} */
+.mantine-1ryt1ht{
+  overflow: inherit;
+}
+.mantine-Modal-content{
+  padding:1em;
+}
+.mantine-1k9itrp {
+  font-size: 1.7em;
+  color: black;
+  font-weight:bold;
+}
 
 
 .btn-grade {

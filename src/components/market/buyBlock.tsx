@@ -1,7 +1,10 @@
-import {Box, Text, Input, Button, Flex, TextInput} from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks';
+import { useState } from 'react';
+import {Box, Text, Input, Button, Flex, TextInput,Popover} from '@mantine/core'
 import ContainerLayout from "@/layouts/containerLayout";
 import Buttons from "@/components/micro/buttons";
 import { FiSettings } from "react-icons/fi";
+import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 
 
@@ -10,6 +13,8 @@ const maxButton = <Button bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 4
 </Button>
 
 const BuyBlock = () => {
+  // const [opened, setOpened] = useState(false);
+  // const [opened, { close, open }] = useDisclosure(false);
   return (
     <>
       <ContainerLayout>
@@ -25,7 +30,24 @@ const BuyBlock = () => {
 
           <Flex justify={'space-between'} align={'center'}>
             <Text color={'#000'} weight={'500'} my={'0.5em'}>Enter Amount</Text>
-            <FiSettings color={'#000'}/>
+            <Popover width={300} trapFocus position="bottom" withArrow shadow="md">
+              <Popover.Target>
+              <Button variant="white" px={'0.8em'} py={'0.5em'}><FiSettings /></Button>
+              </Popover.Target>
+              <Popover.Dropdown sx={(theme) => ({ background: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white })}>
+              <Flex justify={'space-between'} align={'center'}>
+                <Text fw={700} color={'#000'} size={15}>Slippage Tolerance</Text>
+                <Button variant="white" px={'0.8em'} py={'0.5em'} ><AiOutlineClose /></Button>
+              </Flex>
+              <Flex justify={'space-between'} align={'center'}>
+                <Button color="indigo" variant="filled" px={'0.8em'} py={'0.5em'}><Text color={'white'}>0.1%</Text></Button> 
+                <Button variant="default" px={'0.8em'} py={'0.5em'}>0.5%</Button>
+                <Button variant="default" px={'0.8em'} py={'0.5em'}>1%</Button> 
+                <Button variant="default" px={'0.8em'} py={'0.5em'}>0.1%</Button>
+              </Flex>
+              </Popover.Dropdown>
+            </Popover>
+            
           </Flex>
 
           <TextInput type={'number'} size={'lg'} rightSection={maxButton}

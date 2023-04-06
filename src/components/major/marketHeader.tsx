@@ -1,69 +1,24 @@
 import {useState, useRef, useEffect} from 'react';
 import ContainerLayout from '@/layouts/containerLayout';
-import {Box, Drawer, Flex, List, Text, Button} from '@mantine/core';
+import {Box, Drawer, Flex, List, Text, Button,Modal, Group,} from '@mantine/core';
 import {largeView, smallView} from '../../utils/responsiveParams';
 import Image from 'next/image';
 import {FaBars} from 'react-icons/fa';
 import {ButtonInterface} from '../tinyUtils';
-import {HomeConnectedButton} from '../homeConnected';
 import {MdOutlineClose} from 'react-icons/md';
 import Link from 'next/link';
 import Stacky from './stack';
 import {useDisclosure} from "@mantine/hooks";
+import {HomeConnectedButton} from '../homeConnected';
 
-const navsDisConnected = [
-  {
-    title: 'About',
-    path: '',
-  },
-  {
-    title: 'How it works',
-    path: '/#how-it-works',
-  },
-  {
-    title: 'Whitepaper',
-    path: '',
-  },
-
-  {
-    title: 'Blog',
-    path: 'https://foreonnetwork.medium.com/',
-  },
-  {
-    title: 'Community',
-    path: '/',
-    submenu: [
-      {
-        title: 'Twitter',
-        path: 'https://twitter.com/foreonnetwork',
-      },
-      {
-        title: 'Medium',
-        path: 'https://foreonnetwork.medium.com/',
-      },
-      {
-        title: 'Discord',
-        path: 'https://discord.gg/mu4SHREWg9',
-      },
-      {
-        title: 'Telegram',
-        path: 'https://t.me/foreonnetwork',
-      },
-      {
-        title: 'Reddit',
-        path: 'https://www.reddit.com/r/foreonnetwork/',
-      },
-    ],
-  },
-];
-const navsConnected = [
+const navs = [
   {
     title: 'Market',
     path: '/market',
   },
   {
-    title: 'How it works',
-    path: '/#how-it-works',
+    title: 'Home',
+    path: '/home',
   },
 
   {
@@ -96,17 +51,13 @@ const navsConnected = [
       },
     ],
   },
-  
 ];
-
-const AuthHeader = ({handleEvent}: any) => {
+const MarketHeader = ({handleEvent}: any) => {
   const [sidebarOpen, setSidebarOpen] = useState(false); // state to track whether sidebar is open
   const sidebarRef = useRef(null);
   const [connect, setConnect] = useState(false);
-
-  
-
   const [opened, {open, close}] = useDisclosure(false);
+  
 
   
 
@@ -114,40 +65,20 @@ const AuthHeader = ({handleEvent}: any) => {
     setSidebarOpen(!sidebarOpen); // toggle sidebar state
   };
 
-  const addNavItem = () => {
-    console.log("hoemconnected")
-    if(connect == false){
-      // navs.splice(0,1, {
-      //   title: 'Market',
-      //   path: '/market',
-      // });
-      // navs.splice(2,1);
-      // navs.splice(3,1);   
-      setConnect(true); 
-    }
+  const openModal = () => {
+    console.log("afs")
+    
     
   }
 
   const [hover, setHover] = useState<string>('none');
 
   useEffect(() => {
-    console.log("asdfasgd")
     //@ts-ignore
     function handleClickOutside(event) {
-      
       //@ts-ignore
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setSidebarOpen(false);
-        
-      }
-      if(connect == false){
-        // navs.splice(0,1, {
-        //   title: 'Market',
-        //   path: '/market',
-        // });
-        // navs.splice(2,1);
-        // navs.splice(3,1);   
-        setConnect(true); 
       }
     }
 
@@ -160,6 +91,7 @@ const AuthHeader = ({handleEvent}: any) => {
 
   return (
     <>
+      
       <ContainerLayout>
         <Box>
           <Flex align={'center'} py={'em'} justify={'space-between'}>
@@ -220,7 +152,7 @@ const AuthHeader = ({handleEvent}: any) => {
                       cursor: 'pointer',
                     }}
                   >
-                    {(connect ? navsConnected : navsDisConnected).map(({title, path, submenu}) => {
+                    {navs.map(({title, path, submenu}) => {
                       return (
                         <List.Item
                           mx={'2.5em'}
@@ -315,20 +247,12 @@ const AuthHeader = ({handleEvent}: any) => {
                       );
                     })}
                   </List>
-                  
+
                   <Box onClick={handleEvent}>
                     
-                  {connect ? <HomeConnectedButton children="addrr242...8876"/> :
-                    <ButtonInterface> Connect wallet </ButtonInterface>
-                    }
+                  <HomeConnectedButton children="addrr242...8876"/>
                     
                   </Box>
-
-                  {/* <Box onClick={addNavItem}>
-                    {connect ? <HomeConnectedButton children="addrr242...8876"/> :
-                    <ButtonInterface> Connect wallet </ButtonInterface>
-                    }
-                  </Box> */}
 
                 </Flex>
               </Box>
@@ -349,7 +273,7 @@ const AuthHeader = ({handleEvent}: any) => {
             gap: '2em',
           }}
         >
-          {(connect ? navsConnected : navsDisConnected).map(({title, path}) => {
+          {navs.map(({title, path}) => {
             return (
               <>
                 <a href={path} className={'remove-link'}>
@@ -374,4 +298,4 @@ const AuthHeader = ({handleEvent}: any) => {
   );
 };
 
-export default AuthHeader;
+export default MarketHeader;

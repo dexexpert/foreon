@@ -4,18 +4,25 @@ import Faq from '@/components/home/faq';
 import FilterTop from '@/components/market/filterTop';
 import ContainerLayout from '@/layouts/containerLayout';
 import Predictions from "@/components/market/predictios";
-import {Box} from '@mantine/core'
-import AuthHeader from "@/components/major/authHeader";
+import {Box,Modal,Text,Flex,Image} from '@mantine/core'
+import MarketHeader from "@/components/major/marketHeader";
 import {useRouter} from "next/router";
+import { useDisclosure } from '@mantine/hooks';
+import WalletModal from '../../components/walletModal'
+
 
 const Market = () => {
-
+  const [opened, { open, close }] = useDisclosure(false);
   const locateNexte = useRouter();
+  
 
   return (
     <>
+      <WalletModal onClose={close} isOpen={opened} />
+      
       <Box bg={'#F6EEFF'}  mb={'1.5em'}>
-        <AuthHeader  handleEvent={ (e:any) => locateNexte.push('/market/overview')} />
+        {/* <MarketHeader  handleEvent={ (e:any) => locateNexte.push('/market/overview')} /> */}
+        <MarketHeader handleEvent={open}/>
       </Box>
       <Box sx={
         {

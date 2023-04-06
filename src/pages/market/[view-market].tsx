@@ -6,7 +6,7 @@ import FooterAsset from '@/components/micro/footerAsset';
 import BuyBlock from '@/components/market/buyBlock';
 import Wallet from '@/components/main/wallet';
 import WalletDeposit from '@/components/wallet';
-import AuthHeader from '@/components/major/authHeader';
+import MarketHeader from '@/components/major/marketHeader';
 import { useDisclosure } from '@mantine/hooks';
 import {SellBlock} from "@/components/market/sellcrypto";
 import {PredictionWinBlock} from "@/components/market/predictionWinBlock";
@@ -41,7 +41,7 @@ const ViewMarket = () => {
             'url(https://res.cloudinary.com/dhkccnvyn/image/upload/v1679208101/foreon/Rectangle_41_nshdyp.svg)',
         }}
       >
-        <AuthHeader handleEvent={open} />
+        <MarketHeader handleEvent={open} />
         <MarketViewHeader />
       </Box>
 

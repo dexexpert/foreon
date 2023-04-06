@@ -17,6 +17,9 @@ import Next from 'next/image';
 import AuthHeader from '@/components/major/authHeader';
 import {useRouter} from 'next/navigation';
 
+import { useDisclosure } from '@mantine/hooks';
+import WalletModal from '../walletModal';
+
 const SearchHero = () => (
   <>
     <Flex
@@ -107,10 +110,12 @@ const PopularCats = (
 
 const IndexHero = () => {
   const router = useRouter();
+  const [opened, { open, close }] = useDisclosure(false);
   const routeHeader = () => router.push('/market');
 
   return (
     <>
+    <WalletModal onClose={close} isOpen={opened} />
       <Box
         sx={{
           position: 'relative',
@@ -122,7 +127,7 @@ const IndexHero = () => {
           pb={'2em'}
           src="https://res.cloudinary.com/dhdqt4xwu/image/upload/v1679502764/foreon/Hero_nttpfc.png"
         >
-          <AuthHeader handleEvent={routeHeader}/>
+          <AuthHeader handleEvent={open}/>
 
           <ContainerLayout>
             <Flex
