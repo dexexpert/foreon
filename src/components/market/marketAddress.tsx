@@ -1,4 +1,4 @@
-import { Box , Text  , Flex  } from '@mantine/core';
+import { Box , Text  , Flex, Button  } from '@mantine/core';
 
 const Coin =()=> {
   return (
@@ -78,7 +78,7 @@ const MarketAddress =()=> {
                   borderRadius: '10px'
                 }
               }>
-          <LinkIcon/>
+          <Button variant="white" ><LinkIcon/></Button>
 
 
           <Box>
@@ -101,11 +101,11 @@ const MarketAddress =()=> {
                   borderRadius: '10px'
                 }
               }>
-          <WalletIcon/>
-
+          
+          <Button variant="white" ><WalletIcon/></Button>
           <Box>
-            <Text weight={'bold'} color={'#22005D'}>Resolution Source</Text>
-            <Text>https://www.naijadaily...</Text>
+            <Text weight={'bold'} color={'#22005D'}>Contract</Text>
+            <Text>addr23...05678</Text>
           </Box>
         </Flex>
 
@@ -122,11 +122,12 @@ const MarketAddress =()=> {
                   borderRadius: '10px'
                 }
               }>
-          <Coin/>
-
+          
+          <Button variant="white" ><Coin/></Button>
+            
           <Box>
-            <Text weight={'bold'} color={'#22005D'}>Resolution Source</Text>
-            <Text>https://www.naijadaily...</Text>
+            <Text weight={'bold'} color={'#22005D'}>Receiver</Text>
+            <Text>addr23...05678</Text>
           </Box>
         </Flex>
 

@@ -187,10 +187,12 @@ const AuthHeader = ({handleEvent}: any) => {
               }>
 
                 <Flex align={'center'} gap={'1em'}>
-                  <Button w={'145px'} h={'48px'}
-                          radius={'16px'} onClick={handleEvent}
-                          bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%)'}><Text
-                    color={'#fff'}>Connect Wallet</Text></Button>
+                  
+                  <Box onClick={handleEvent}>
+                    
+                    <HomeConnectedButton>addr24..76</HomeConnectedButton>
+                    
+                  </Box>
                   <Box>
                     {!sidebarOpen ? (
                       <FaBars
@@ -220,11 +222,11 @@ const AuthHeader = ({handleEvent}: any) => {
                       cursor: 'pointer',
                     }}
                   >
-                    {(connect ? navsConnected : navsDisConnected).map(({title, path, submenu}) => {
+                    {(connect ? navsConnected : navsDisConnected).map(({title, path, submenu},index) => {
                       return (
                         <List.Item
                           mx={'2.5em'}
-                          key={title}
+                          key={index}
                           sx={{
                             color: '#22005D',
                             position: 'relative',
@@ -318,7 +320,7 @@ const AuthHeader = ({handleEvent}: any) => {
                   
                   <Box onClick={handleEvent}>
                     
-                  {connect ? <HomeConnectedButton children="addrr242...8876"/> :
+                  {connect ? <HomeConnectedButton>addrr242...8876</HomeConnectedButton>:
                     <ButtonInterface> Connect wallet </ButtonInterface>
                     }
                     
@@ -349,10 +351,10 @@ const AuthHeader = ({handleEvent}: any) => {
             gap: '2em',
           }}
         >
-          {(connect ? navsConnected : navsDisConnected).map(({title, path}) => {
+          {(connect ? navsConnected : navsDisConnected).map(({title, path},index) => {
             return (
               <>
-                <a href={path} className={'remove-link'}>
+                <a href={path} className={'remove-link'} key={index}>
                   <Text
                     my={'1em'}
                     sx={{

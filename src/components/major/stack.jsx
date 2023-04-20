@@ -125,9 +125,9 @@ const categoriesList = [
 const BrowseByCategories = () => {
 
   const matchQuery = useMediaQuery('(min-width: 50em)');
-  const categories = categoriesList.map (({title , stat , icon }) => {
+  const categories = categoriesList.map (({title , stat , icon },index) => {
     return <>
-      <Box id={'browse'} key={title} data-aos={'fade-up'}>
+      <Box id={'browse'} key={index} data-aos={'fade-up'}>
 
         <Box p={' 1.8px'} className={'global-btn-color'} w={
           {

@@ -5,44 +5,66 @@ import { FiEyeOff, FiEye } from 'react-icons/fi';
 import Buttons from '@/components/micro/buttons';
 import { AiOutlineDollar } from 'react-icons/ai';
 import WalletPredictions from '@/components/micro/walletPredictions';
+import InWalletPredictions from '@/components/micro/inWalletPredictions';
 import cogoToast from 'cogo-toast';
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import WalletDeposit from '@/components/wallet';
+import WalletDeposit from '@/components/walletDeposit';
 import WalletExchange from '@/components/cryptoWalletKits/walletExchange';
 import WalletWithrawal from '@/components/cryptoWalletKits/WalletWithrawal';
 import { BsPower } from 'react-icons/bs';
+import {RiArrowLeftRightLine} from 'react-icons/ri';
+import { useRef } from 'react';
+import {MdOutlineArrowBackIos} from 'react-icons/md';
 
-const ArrowIcon = () => {
-  return (
-    <svg
-      width="42"
-      height="38"
-      viewBox="0 0 42 38"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="1" y="1" width="40" height="36" rx="4" fill="white" />
-      <g clipPath="url(#clip0_461_4278)">
-        <path
-          d="M23.6667 21.6667V19L27 22.3333L23.6667 25.6667V23H15.6667V21.6667H23.6667ZM18.3333 12.3333V14.9993L26.3333 15V16.3333H18.3333V19L15 15.6667L18.3333 12.3333Z"
-          fill="#5138F6"
-        />
-      </g>
-      <rect x="1" y="1" width="40" height="36" rx="4" stroke="#5138F6" />
-      <defs>
-        <clipPath id="clip0_461_4278">
-          <rect
-            width="16"
-            height="16"
-            fill="white"
-            transform="translate(13 11)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  );
-};
+const ArrowIcons = () => {
+  return <>
+    <Button 
+        sx={
+            {
+                borderRadius:'10px',
+                fontSize: '16px',
+                // overflow:'inherit !important'
+            }
+        }
+
+      px={'1em'} py={'1em'} variant="outline">  
+      <RiArrowLeftRightLine />
+              
+    </Button>
+  </>
+}
+
+// const ArrowIcon = () => {
+//   return (
+//     <svg
+//       width="42"
+//       height="38"
+//       viewBox="0 0 42 38"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <rect x="1" y="1" width="40" height="36" rx="4" fill="white" />
+//       <g clipPath="url(#clip0_461_4278)">
+//         <path
+//           d="M23.6667 21.6667V19L27 22.3333L23.6667 25.6667V23H15.6667V21.6667H23.6667ZM18.3333 12.3333V14.9993L26.3333 15V16.3333H18.3333V19L15 15.6667L18.3333 12.3333Z"
+//           fill="#5138F6"
+//         />
+//       </g>
+//       <rect x="1" y="1" width="40" height="36" rx="4" stroke="#5138F6" />
+//       <defs>
+//         <clipPath id="clip0_461_4278">
+//           <rect
+//             width="16"
+//             height="16"
+//             fill="white"
+//             transform="translate(13 11)"
+//           />
+//         </clipPath>
+//       </defs>
+//     </svg>
+//   );
+// };
 
 const WalletIcon = () => (
   <svg
@@ -59,8 +81,16 @@ const WalletIcon = () => (
   </svg>
 );
 
-const Wallet = () => {
+interface closeWallet {
+  closeWallet: Function;
+}
+const Wallet:React.FC<closeWallet> = (props) => {
   const [showBalance, setShowBalance] = useState(true);
+  const myRef = useRef(null);
+
+  function handlecloseClick() {
+    props.closeWallet();
+  }
 
   const hideAndShowBalace = () =>
     showBalance ? setShowBalance(false) : setShowBalance(true);
@@ -78,6 +108,7 @@ const Wallet = () => {
   return (
     <>
       <Drawer
+        size={'lg'}
         opened={opened}
         onClose={close}
         position={'right'}
@@ -86,11 +117,12 @@ const Wallet = () => {
           header: { display: 'none' },
         }}
       >
-        {/*<WalletDeposit/>*/}
-        <WalletExchange />
+        <WalletDeposit closeDeposit={close}/>
+        {/* <WalletExchange /> */}
       </Drawer>
 
       <Drawer
+        size={'lg'}
         opened={isWithdrawal}
         onClose={onClose}
         position={'right'}
@@ -100,7 +132,7 @@ const Wallet = () => {
         }}
       >
         {/*<WalletDeposit/>*/}
-        <WalletWithrawal />
+        <WalletWithrawal closeWithrawal={onClose}/>
       </Drawer>
 
       <Box>
@@ -112,16 +144,19 @@ const Wallet = () => {
               cursor: 'pointer',
             }}
           >
-            <Box>
+            <Flex align={'center'} onClick={handlecloseClick}>
+
+              <MdOutlineArrowBackIos fill={'#fff'} />
               <Text
+                px={'0.2em'}
                 color={'#fff'}
                 weight={'bold'}
                 className={'duplicate'}
-                size={'18px'}
+                size={'25px'}
               >
                 Wallet
               </Text>
-            </Box>
+            </Flex>
 
             <Box
               sx={{
@@ -226,7 +261,7 @@ const Wallet = () => {
                 </Box>
                 {/*@ts-ignore*/}
                 <Box cursor={'pointer'}>
-                  <ArrowIcon />
+                <Button variant="white" px={'0.8em'} py={'0.5em'} ><ArrowIcons/></Button>
                 </Box>
               </Flex>
             </Box>
@@ -269,7 +304,7 @@ const Wallet = () => {
           </Box>
         </ContainerLayout>
         <Box>
-          <WalletPredictions />
+          <InWalletPredictions />
         </Box>
       </Box>
     </>

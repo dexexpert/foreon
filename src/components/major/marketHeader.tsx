@@ -119,10 +119,15 @@ const MarketHeader = ({handleEvent}: any) => {
               }>
 
                 <Flex align={'center'} gap={'1em'}>
-                  <Button w={'145px'} h={'48px'}
+                  {/* <Button w={'145px'} h={'48px'}
                           radius={'16px'} onClick={handleEvent}
                           bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%)'}><Text
-                    color={'#fff'}>Connect Wallet</Text></Button>
+                    color={'#fff'}>Connect Wallet</Text></Button> */}
+                    <Box onClick={handleEvent}>
+                    
+                    <HomeConnectedButton>addr24..76</HomeConnectedButton>
+                    
+                  </Box>
                   <Box>
                     {!sidebarOpen ? (
                       <FaBars
@@ -152,11 +157,11 @@ const MarketHeader = ({handleEvent}: any) => {
                       cursor: 'pointer',
                     }}
                   >
-                    {navs.map(({title, path, submenu}) => {
+                    {navs.map(({title, path, submenu},index) => {
                       return (
                         <List.Item
                           mx={'2.5em'}
-                          key={title}
+                          key={index}
                           sx={{
                             color: '#22005D',
                             position: 'relative',
@@ -208,11 +213,12 @@ const MarketHeader = ({handleEvent}: any) => {
                                   textAlign: 'center',
                                 }}
                               >
-                                  {submenu.map((item, index) => (
+                                  {submenu.map((item, index1) => (
                                   //@ts-ignore
                                   <a
+                                    key={index1}
                                     href={item?.path}
-                                    key={index}
+                                    
                                     className={'remove-link'}
                                   >
                                     {/* @ts-ignore */}
@@ -250,7 +256,7 @@ const MarketHeader = ({handleEvent}: any) => {
 
                   <Box onClick={handleEvent}>
                     
-                  <HomeConnectedButton children="addrr242...8876"/>
+                    <HomeConnectedButton>addrr242...8876</HomeConnectedButton>
                     
                   </Box>
 
@@ -273,10 +279,10 @@ const MarketHeader = ({handleEvent}: any) => {
             gap: '2em',
           }}
         >
-          {navs.map(({title, path}) => {
+          {navs.map(({title, path},index3) => {
             return (
               <>
-                <a href={path} className={'remove-link'}>
+                <a key={index3} href={path} className={'remove-link'} >
                   <Text
                     my={'1em'}
                     sx={{

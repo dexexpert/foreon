@@ -84,10 +84,10 @@ const FooterAsset = () => {
                       align={'left'}
                       listStyleType="none"
                     >
-                      {navs.map(({ title, path }) => {
+                      {navs.map(({ title, path }, index) => {
                         return (
                           <>
-                            <a href={path} className={'remove-link'}>
+                            <a key={index} href={path} className={'remove-link'}>
                               {' '}
                               <Text
                                 mx={'2em'}
@@ -106,11 +106,11 @@ const FooterAsset = () => {
 
                 <Box display={{ ...largeView }}>
                   <List display={'flex'} color={'white'} listStyleType="none">
-                    {navs.map(({ title, path }) => {
+                    {navs.map(({ title, path }, index) => {
                       return (
                         <>
                           {/* @ts-ignore */}
-                          <a href={path} className={'remove-link'}>
+                          <a key={index} href={path} className={'remove-link'}>
                             <Text mx={'2em'} color={'white'}>
                               {title}
                             </Text>

@@ -25,9 +25,9 @@ const Rounded = () => {
               y2="266.57"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#00A9B7" />
-              <stop offset="0.5027" stop-color="#4C32F2" />
-              <stop offset="1" stop-color="#9F00BE" />
+              <stop stopColor="#00A9B7" />
+              <stop offset="0.5027" stopColor="#4C32F2" />
+              <stop offset="1" stopColor="#9F00BE" />
             </linearGradient>
           </defs>
         </svg>

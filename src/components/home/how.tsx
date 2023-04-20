@@ -99,10 +99,10 @@ const Works = () => {
             >
               {
                 // @ts-ignore
-                info.map(({ title, image, text }) => {
+                info.map(({ title, image, text },index) => {
                   return (
                     <>
-                      <InfoTag src={image} title={title}>
+                      <InfoTag key={index} src={image} title={title}>
                         {text}
                       </InfoTag>
                     </>

@@ -2,6 +2,7 @@ import { InputBase} from "@mantine/core";
 import {BiSearch} from 'react-icons/bi';
 import {Box , Button , Text } from "@mantine/core";
 import styles from '../../styles/market.module.css'
+import React, { useState } from 'react';
 
 export const FilterSearchBox =()=> {
 
@@ -31,13 +32,20 @@ export const FilterSearchBox =()=> {
   )
 }
 
+interface Buttonprops {
+  handleClick: Function;
+}
 
-
-export const FilterButton =()=> {
+export const FilterButton =(props: Buttonprops)=> {
+  
+  const [showSlowComponent, setShowSlowComponent] = useState(false);
+  function handleButtonClick() {
+    props.handleClick();
+  }
   return (
     <>
      <Button  color={'#00000'} radius={'25px'} h={'52px'}  p={'8px'} w={'96px'} bg={'none'}
-     sx={{border: '1px solid #E6E1E6'}}>
+     sx={{border: '1px solid #E6E1E6'}} onClick={handleButtonClick}>
        <Text color={'#000'}>Filter</Text>
      </Button>
     </>

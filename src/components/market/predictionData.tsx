@@ -1,9 +1,9 @@
-import {Box, Flex, Text,Button,Popover,Checkbox} from '@mantine/core';
-import {useMediaQuery} from "@mantine/hooks";
+import {Box, Flex, Text,Button,Popover,Checkbox,CloseButton} from '@mantine/core';
+import {useMediaQuery,useDisclosure } from "@mantine/hooks";
 import {BsFillCaretRightFill, BsFillCaretDownFill} from 'react-icons/bs';
-import { useState} from "react";
+import { useEffect, useState} from "react";
 import {FiSettings} from 'react-icons/fi';
-import {RiArrowLeftRightLine} from 'react-icons/Ri';
+import {RiArrowLeftRightLine} from 'react-icons/ri';
 import { AiOutlineClose } from "react-icons/ai";
 
 const SettingsIcon = () => {
@@ -52,7 +52,38 @@ const PredictionData = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  // const [showSetting, setShowSetting] = useState('hide');
+  const [showPopover, setShowPopover] = useState(false);
+
   const collapseItem =() => !isOpen ? setIsOpen(true) : setIsOpen(false);
+
+  // const closeSetting =() => {
+  //   if(showSetting=='hide')
+  //     setShowSetting('show')
+  //   else
+  //     setShowSetting('hide')
+  const [opened, setOpened] = useState(false);
+  const [changed, setChange] = useState(false);
+  // }
+  // function show() {
+  //   setShowPopover(true);
+  //   console.log("setting clicks",showPopover);
+  // }
+
+  // const show =() => {
+  //   setShowPopover(true);
+  //   console.log("setting clicks",showPopover);
+  // }
+
+  // const close =() => {
+  //   setShowPopover(false);
+  //   console.log("close button clicks",showPopover);
+  // }
+
+
+  useEffect(() => {
+    console.log(showPopover)
+  }, [showPopover]);
 
 
 
@@ -75,13 +106,19 @@ const PredictionData = () => {
 
         <Flex justify={'space-between'} gap={'1em'} wrap={'wrap'} align={'center'}>
 
-          <Box>
-
-            <Text color={'#000'}>Yes</Text>
-            <Text weight={'bold'} className={'duplicate'} size={matches ? '34px' : '23px'} color={'#000'}>40 ADA</Text>
-            <Text color={'#219653'}>+2 ADA (+1.22%) <span>Past 1 Hour</span></Text>
-
-          </Box>
+          
+          {!changed ? 
+            <Box>
+              <Text color={'#000'}>Yes</Text>
+              <Text weight={'bold'} className={'duplicate'} size={matches ? '34px' : '23px'} color={'#000'}>40 ADA</Text>
+              <Text color={'#219653'}>+2 ADA (+1.22%) <span>Past 1 Hour</span></Text>
+            </Box> :
+            <Box>
+              <Text color={'#000'}>No</Text>
+              <Text weight={'bold'} className={'duplicate'} size={matches ? '34px' : '23px'} color={'#000'}>20 ADA</Text>
+              <Text color={'#219653'}>+2 ADA (+1.22%) <span>Past 1 Hour</span></Text>
+            </Box>
+          }
 
           <Box sx={
             {
@@ -89,40 +126,48 @@ const PredictionData = () => {
               gap: '0.3em'
             }
           }>
-            <ArrowIcons/>
-            <Popover width={250} trapFocus position="bottom" withArrow shadow="md">
+            
+            <Button variant="white" px={'0.8em'} py={'0.5em'} onClick={() => setChange((o) => !o)}><ArrowIcons/></Button>
+            
+            <Popover  opened={opened} onChange={setOpened} width={250} trapFocus position="left-start" withArrow shadow="md">
               <Popover.Target>
-              <Button variant="white" px={'0.8em'} py={'0.5em'}><SettingsIcon/></Button>
+              <Button variant="white" px={'0.8em'} py={'0.5em'} onClick={() => setOpened((o) => !o)}><SettingsIcon/></Button>
               </Popover.Target>
-              <Popover.Dropdown sx={(theme) => ({ background: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white })}>
-              <Flex direction="column">
-                <Flex justify={'space-between'} align={'center'}>
-                  <Text  fw={700} color={'#000'} size={18}>Slippage Tolerance</Text>
-                  <Button variant="white" px={'0.8em'} py={'0.5em'} ><AiOutlineClose /></Button>
-                </Flex>
-                <Checkbox size="md" label="X-Axis" py={'0.6em'}/>
-              </Flex>
+              {/* {!showPopover && ( */}
+                  <Popover.Dropdown  sx={(theme) => ({ background: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white })}>
+                  <Flex direction="column">
+                    <Flex justify={'space-between'} align={'center'}>
+                      <Text  fw={700} color={'#000'} size={18}>Graph Settings</Text>
+                      <Button variant="white" px={'0.8em'} py={'0.5em'} onClick={() => setOpened((o) => !o)} ><AiOutlineClose /></Button>
+                      {/* <CloseButton  aria-label="Close modal" /> */}
+                      {/* <CloseButton title="Close popover" size="xl" iconSize={20} onClick={closeSetting}/> */}
+                    </Flex>
+                  <Checkbox size="md" label="Outcome settings" py={'0.6em'}/>
+                  </Flex>
+                
+  
+                  <Flex direction="column" >
+                      <Text   fw={700} color={'#000'} size={18}>Display</Text>
+                    <Flex direction="column">
+                      <Checkbox size="md" label="X-Axis" py={'0.4em'}/>
+                      <Checkbox size="md" label="Y-Axis" py={'0.4em'}/>
+                      <Checkbox size="md" label="Grid" py={'0.4em'}/>
+                      <Checkbox size="md" label="Decimals" py={'0.4em'}/>
+                    </Flex>
+                  </Flex>
+  
+                  <Flex direction="column">
+                      <Text  fw={700} color={'#000'} size={18}>Interactivity</Text>
+                    <Flex style={{position:'relative', display:'block'}}>
+                      <Checkbox size="md" label="Autoscale" py={'0.4em'}/>
+                      
+                    </Flex>
+                  </Flex>
+                
+                </Popover.Dropdown>
+              {/* )} */}
               
-
-              <Flex direction="column" >
-                  <Text   fw={700} color={'#000'} size={18}>Slippage Tolerance</Text>
-                <Flex direction="column">
-                  <Checkbox size="md" label="X-Axis" py={'0.4em'}/>
-                  <Checkbox size="md" label="Y-Axis" py={'0.4em'}/>
-                  <Checkbox size="md" label="Grid" py={'0.4em'}/>
-                  <Checkbox size="md" label="Decimals" py={'0.4em'}/>
-                </Flex>
-              </Flex>
-
-              <Flex direction="column">
-                  <Text  fw={700} color={'#000'} size={18}>Slippage Tolerance</Text>
-                <Flex style={{position:'relative', display:'block'}}>
-                  <Checkbox size="md" label="Autoscale" py={'0.4em'}/>
-                  
-                </Flex>
-              </Flex>
               
-              </Popover.Dropdown>
             </Popover>
             
           </Box>

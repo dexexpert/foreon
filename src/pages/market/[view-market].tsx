@@ -1,36 +1,51 @@
-import { Box, Flex, Tabs, Drawer , Text } from '@mantine/core';
+import { Box, Flex, Tabs, Drawer , Text,Button } from '@mantine/core';
 import Header from '@/components/major/header';
 import MarketViewHeader from '@/components/micro/marketViewHeader';
 import Overview from '@/components/market/overview';
 import FooterAsset from '@/components/micro/footerAsset';
 import BuyBlock from '@/components/market/buyBlock';
 import Wallet from '@/components/main/wallet';
-import WalletDeposit from '@/components/wallet';
+import WalletDeposit from '@/components/walletDeposit';
 import MarketHeader from '@/components/major/marketHeader';
 import { useDisclosure } from '@mantine/hooks';
 import {SellBlock} from "@/components/market/sellcrypto";
 import {PredictionWinBlock} from "@/components/market/predictionWinBlock";
 import {RedeemWinings} from "@/components/market/redeemWinings";
+import React, { Suspense, lazy,useState } from 'react';
+import { useRef } from 'react';
 
 
 const ViewMarket = () => {
   const [opened, { open, close }] = useDisclosure(false);
+  const myRef = useRef(null);
+  const [closeDrawer, setCloseDrawer] = useState(true);
+
+  const closeClick = () => {
+    if(closeDrawer == true){
+      console.log("false");
+      setCloseDrawer(false);
+      
+    } else setCloseDrawer(false);
+    
+  }
 
   return (
     <>
-      <Drawer
-        opened={opened}
-        onClose={close}
-        position={'right'}
-        styles={{
-          body: { padding: 0 },
-          header: { display: 'none' },
-        }}
-      >
-        <Wallet />
-      </Drawer>
-
-
+    <Drawer
+    size={'lg'}
+    opened={opened}
+    onClose={close}
+    position={'right'}
+    styles={{
+      body: { padding: 0 },
+      header: { display: 'none' },
+      
+    }}
+  >
+     <Wallet closeWallet={close} /> 
+    
+  </Drawer>
+      
       <Box
         sx={{
           padding: '0em 1em',

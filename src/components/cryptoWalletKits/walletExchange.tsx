@@ -1,8 +1,9 @@
-import {Box, Text, Flex, Alert, Button} from '@mantine/core';
+import {Box, Text, Flex, Alert, Button,Image} from '@mantine/core';
 import {MdOutlineArrowBackIos} from 'react-icons/md';
 import ContainerLayout from '@/layouts/containerLayout';
 import {BiCopy} from "react-icons/bi";
-import {FiAlertCircle} from 'react-icons/fi'
+import {FiAlertCircle} from 'react-icons/fi';
+import cogoToast from 'cogo-toast';
 
 const DepositIcon = () => {
   return (
@@ -20,6 +21,12 @@ const DepositIcon = () => {
     </svg>
   );
 };
+const copyText = () => {
+  const url = 'addrr24245jtfmd53i6o358876';
+  navigator.clipboard
+    .writeText(url)
+    .then((res) => cogoToast.success('Address copied to clipboard'));
+};
 
 const CoinIcon = () => {
   return <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +38,22 @@ const CoinIcon = () => {
 
 const info =
   [{
-    title: 'Send ADA from exchange',
+    title: 
+    <Text display={'flex'} sx={{alignItems:'center'}}> Select
+          <Image
+          
+            sx={{
+              marginLeft:'6px',
+            }}
+            height={18}
+            width={18}
+            
+            src={
+              'https://res.cloudinary.com/du59y8tjp/image/upload/v1681201177/image_18_suuaov.png'
+            }
+          />
+          ADA from your list of coins
+      </Text> ,
     numbering: 1
   },
     {
@@ -114,7 +136,8 @@ const bulletItem = <Box sx={
                cursor: 'pointer'
 
              }
-           }>
+           }
+           onClick={copyText}>
         <BiCopy fill={'#fff'}/>
         <Text color={'#fff'}>Copy</Text>
       </Box>
@@ -124,7 +147,16 @@ const bulletItem = <Box sx={
 
 </Box>
 
-const WalletExchange = () => {
+interface closeExchange {
+  closeExchange: Function;
+}
+
+const WalletExchange:React.FC<closeExchange> = (props) => {
+  function handleCloseExchange() {
+    props.closeExchange();
+  }
+  
+  
   return (
     <>
       <Box
@@ -134,7 +166,9 @@ const WalletExchange = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '0.5em',
+          cursor: 'pointer'
         }}
+        onClick={handleCloseExchange}
       >
         <MdOutlineArrowBackIos fill={'#fff'}/>{' '}
         <Text color={'#fff'} className={'duplicate'} size={'25px'}>
@@ -143,7 +177,23 @@ const WalletExchange = () => {
       </Box>
       <ContainerLayout>
 
-        <Box my={'2em'}>
+        <Box my={'2em'} >
+          <Text fw={700} fz="xl" c={'black'} py={'1em'} display={'flex'} sx={{alignItems:'center'}}>Send 
+            <Image
+                  sx={{
+                    marginLeft:'8px',
+                    
+                  }}
+                  height={20}
+                  width={20}
+                  
+                  src={
+                    'https://res.cloudinary.com/du59y8tjp/image/upload/v1681201177/image_18_suuaov.png'
+                  }
+                />  
+             ADA from any exchange
+          
+          </Text>
 
           {bulletItem}
           <Alert my={'1em'} icon={<FiAlertCircle color={'black'} size="1rem"/>} sx={

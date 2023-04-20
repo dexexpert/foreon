@@ -25,7 +25,11 @@ const searchButton = <Box bg={'#5138F6'} w={'80%'} h={'80%'} sx={
   {searchIcon}
 </Box>
 
-const FilterTop = () => {
+interface Buttonprops {
+  handleClick: Function;
+}
+
+const FilterTop:React.FC<Buttonprops> = (props) => {
   const route = useRouter();
   const matches = useMediaQuery('(min-width: 40em)')
 
@@ -73,7 +77,7 @@ const FilterTop = () => {
                 }}
 
               >
-                <FilterButton/>
+                <FilterButton  handleClick={props.handleClick}/>
 
                 <select style={{color: 'black', fontWeight: 'medium'}} className={'foreon-select'}>
                   <option>Liquidity</option>
@@ -82,17 +86,21 @@ const FilterTop = () => {
 
               <Box bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%)'}
                    sx={{
-                     borderRadius: !matches ? '90px' : '100px',
+                    //  borderRadius: !matches ? '90px' : '100px',
+                    borderRadius: '2em !important',
                      padding: '1px'
                    }}>
                 <Box
+                  
                   p={{base: '1em', lg: '0 0.5em'}}
                   h={{sm: 'none', lg: '60px'}}
                   sx={{
                     background: '#fff',
-                    borderRadius: !matches ? '90px' : '100px',
+                    // borderRadius: !matches ? '90px' : '100px',
+                    borderRadius: '2em !important',
                     alignItems: 'center',
                     display: 'flex',
+                    flexWrap: 'wrap'
 
                     // flexWrap: 'wrap',
                   }}
@@ -102,8 +110,9 @@ const FilterTop = () => {
                     return (
                       <>
                         <Button
-                          bg={'none'}
                           key={index}
+                          bg={'none'}
+                          
                           className={pathMatch ? 'btn-grade' : 'btn-normal'}
                           sx={{
                             borderRadius: '80px',

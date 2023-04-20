@@ -50,7 +50,7 @@ export const listData: FilterData[] =[
   {
     name: 'Trending',
     state: '',
-    path: '/screens'
+    path: '/home'
   },
 
 

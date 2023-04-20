@@ -115,7 +115,7 @@ const IndexHero = () => {
 
   return (
     <>
-    <WalletModal onClose={close} isOpen={opened} />
+      <WalletModal onClose={close} isOpen={opened} />
       <Box
         sx={{
           position: 'relative',
@@ -214,6 +214,7 @@ const IndexHero = () => {
                   <Image
                     width={130}
                     height={100}
+                    alt="ifaiyo"
                     src={
                       'https://res.cloudinary.com/dhdqt4xwu/image/upload/v1679502711/foreon/Group_21_ifaiyo.svg'
                     }

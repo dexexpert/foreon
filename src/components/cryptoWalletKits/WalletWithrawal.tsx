@@ -19,8 +19,10 @@ const rightButton = <>
 
 
 
-
-const WalletWithdrawal = () => {
+interface closeWithrawal {
+  closeWithrawal: Function;
+}
+const WalletWithdrawal:React.FC<closeWithrawal> = (props) => {
 
   const [ opened , {open , close }] = useDisclosure();
   const [ onError , {open: openErrorModal , close: closeErrorModal  }] = useDisclosure();
@@ -39,6 +41,11 @@ const WalletWithdrawal = () => {
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit
   </WarningModal>
 
+function handlecloseWithrawal() {
+  props.closeWithrawal();
+}
+
+
   return (
     <>
 
@@ -53,23 +60,25 @@ const WalletWithdrawal = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '0.5em',
+          cursor: 'pointer'
         }}
+        onClick={handlecloseWithrawal}
       >
-        <MdOutlineArrowBackIos fill={'#fff'}/>{' '}
+        <MdOutlineArrowBackIos fill={'#fff'} />{' '}
         <Text color={'#fff'} className={'duplicate'} size={'25px'}>
           Withdraw
         </Text>
       </Box>
-      <ContainerLayout>
+      <ContainerLayout size="xs" px="xs">
 
-        <Text color={'#000'} my={'1em'} weight={'bold'}> Withdraw to another wallet or exchange</Text>
+        <Text color={'#000'} my={'1em'} weight={'bold'} > Withdraw to another wallet or exchange</Text>
 
-        <TextInput size={'lg'} my={'0.5em'} label={'ADA Address'}
+        <TextInput size={'lg'} my={'0.5em'} label={'ADA Address'} placeholder='ADA'
                    styles={{
                      label: {fontSize: ' 14px '}
                    }}/>
 
-        <TextInput size={'lg'} my={'1em'} label={'Amount To Withdraw'}
+        <TextInput size={'lg'} my={'1em'} label={'Amount To Withdraw'} placeholder='0 ADA'
                    rightSection={rightButton}
                    styles={{
                      label: {fontSize: ' 14px '}

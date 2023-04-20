@@ -3,7 +3,7 @@ import { Box, Text, Title } from '@mantine/core';
 import AccordionElement from '@/components/micro/accordionElement';
 
 const Faq = () => {
-  const questions: any = [
+  const questions = [
     {
       question: 'What is Foreon Network?',
       answer:
@@ -58,10 +58,10 @@ const Faq = () => {
             mx={'auto'}
             my={'3.5em'}
           >
-            {questions.map((items: any) => {
+            {questions.map((items, index) => {
               return (
                 <>
-                  <AccordionElement header={items.question}>
+                  <AccordionElement key={index} header={items.question}>
                     {/* eslint-disable-next-line react/no-danger-with-children */}
                     <Text
                       dangerouslySetInnerHTML={{ __html: items.answer }}

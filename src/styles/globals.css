@@ -219,6 +219,7 @@ body {
 .mantine-11r41z1 .mantine-u9j1uq{
   max-width: 86rem;
 }
+
 /* .mantine-Container-root.mantine-u9j1uq{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -226,6 +227,21 @@ body {
   margin-right: auto;
 } */
 
+@keyframes mymove {
+  from {left: -300px;}
+  to {left: 0px;}
+}
+
+.slow-component-wrapper {
+  
+  animation: mymove 0.2s ;
+  position: relative;
+  
+}
+
+.slow-component-wrapper.show {
+  animation-timing-function: linear;
+}
 
 @media screen and (max-width: 900px) {
   .desktop-show {
@@ -281,12 +297,40 @@ body {
   .titleSize {
     font-size: 35px;
   }
+
+  .filter-width{
+    width: 300px;
+  }
+  .filter-box-width{
+    width: 230px;
+  }
+ 
+}
+
+@media screen and (min-width: 400px){
+  .filter-width{
+    width: 200px;
+  }
+  .filter-box-width{
+    width: 150px;
+  }
+}
+
+
+@media screen and (min-width: 600px){
+  .filter-width{
+    width: 320px;
+  }
+  .filter-box-width{
+    width: 220px;
+  }
 }
 
 @media screen and (min-width: 900px) {
   .heroHeader {
     font-size: 72px;
   }
+
 
   .head-description {
     font-size: 28px !important;
@@ -301,6 +345,16 @@ body {
   .Para {
     font-size: 25px;
   }
+
+  .filter-width{
+    width: 300px;
+  }
+  .filter-box-width{
+    width: 230px;
+  }
+  /* .mantine-maz1v6{
+    width: 280px;
+  } */
 }
 
 /* for large screens  */
@@ -323,6 +377,19 @@ body {
   }
 }
 
+
+
+
+
+@media screen and (min-width: 1000px){
+  .filter-width{
+    width: 320px;
+  }
+  .filter-box-width{
+    width: 250px;
+  }
+}
+
 @media screen and (min-width: 1700px) {
   .heroHeader {
     font-size: 4.5em;
@@ -335,6 +402,12 @@ body {
 
   .foreon-left {
     width: 80vw;
+  }
+  .filter-width{
+    width: 350px;
+  }
+  .filter-box-width{
+    width: 300px;
   }
 }
 
@@ -352,5 +425,11 @@ body {
   }
 
   .foreon-left {
+  }
+  .filter-width{
+    width: 400px;
+  }
+  .filter-box-width{
+    width: 350px;
   }
 }

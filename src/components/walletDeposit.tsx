@@ -1,8 +1,11 @@
-import {Box, Text, Flex} from '@mantine/core';
+import {Box, Text, Flex,Drawer,Button} from '@mantine/core';
 import {MdOutlineArrowBackIos} from 'react-icons/md';
 import ContainerLayout from '@/layouts/containerLayout';
+import { useDisclosure } from '@mantine/hooks';
+import WalletExchange from '@/components/cryptoWalletKits/walletExchange';
 
 const DepositIcon = () => {
+  const [opened, { open, close }] = useDisclosure();
   return (
     <svg
       width="42"
@@ -27,9 +30,29 @@ const CoinIcon = () => {
   </svg>
 }
 
-const WalletDeposit = () => {
+interface closeDeposit {
+  closeDeposit: Function;
+}
+
+const WalletDeposit:React.FC<closeDeposit> = (props) => {
+  const [opened, { open, close }] = useDisclosure();
+  function handleCloseDeposit() {
+    props.closeDeposit();
+  }
   return (
     <>
+      <Drawer
+          size="lg"
+          opened={opened}
+          onClose={close}
+          position={'right'}
+          styles={{
+            body: { padding: 0 },
+            header: { display: 'none' },
+          }}
+        >
+          <WalletExchange closeExchange={close}/>
+        </Drawer>
       <Box
         p={'2.5em 1.5em'}
         bg={'#22005D'}
@@ -37,9 +60,13 @@ const WalletDeposit = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '0.5em',
+          cursor: 'pointer',
         }}
+        onClick={handleCloseDeposit}
       >
-        <MdOutlineArrowBackIos fill={'#fff'}/>{' '}
+        <MdOutlineArrowBackIos fill={'#fff'}  cursor={'pointer'}/>
+        
+        
         <Text color={'#fff'} className={'duplicate'} size={'25px'}>
           Deposite
         </Text>
@@ -52,7 +79,7 @@ const WalletDeposit = () => {
           </Text>
         </Box>
 
-        <Box my={'2em'}>
+        <Box my={'2em'} px={'2em'}>
           <Box display={'flex'}
                sx={
                  {
@@ -96,7 +123,7 @@ const WalletDeposit = () => {
               <CoinIcon/>
             </Box>
 
-            <Box>
+            <Box onClick={open}>
               <Text weight='bold' color='black' className={'duplicate'} size={'18px'}>Crypto Exchange</Text>
               <Text size={'10px'}>
                 Deposit from any exchange like coinbase etc.

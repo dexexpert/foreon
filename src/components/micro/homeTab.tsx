@@ -60,7 +60,7 @@ export const HomeTab = function () {
                       return (
                         <>
 
-                          <Button bg={'none'} key={index} className={pathMatch ? 'btn-grade' : 'btn-normal'}
+                          <Button key={index} bg={'none'}  className={pathMatch ? 'btn-grade' : 'btn-normal'}
                                   sx={
                                     {
                                       borderRadius: '80px',

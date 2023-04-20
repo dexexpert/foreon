@@ -141,11 +141,11 @@ const Header = ({handleEvent}: any) => {
                       cursor: 'pointer',
                     }}
                   >
-                    {navs.map(({title, path, submenu}) => {
+                    {navs.map(({title, path, submenu}, index) => {
                       return (
                         <List.Item
                           mx={'2.5em'}
-                          key={title}
+                          key={index}
                           sx={{
                             color: '#22005D',
                             position: 'relative',
@@ -197,11 +197,11 @@ const Header = ({handleEvent}: any) => {
                                   textAlign: 'center',
                                 }}
                               >
-                                {submenu.map((item, index) => (
+                                {submenu.map((item, index1) => (
                                   //@ts-ignore
                                   <a
                                     href={item?.path}
-                                    key={index}
+                                    key={index1}
                                     className={'remove-link'}
                                   >
                                     {/* @ts-ignore */}
@@ -263,10 +263,10 @@ const Header = ({handleEvent}: any) => {
             gap: '2em',
           }}
         >
-          {navs.map(({title, path}) => {
+          {navs.map(({title, path},index3) => {
             return (
               <>
-                <a href={path} className={'remove-link'}>
+                <a key={index3} href={path} className={'remove-link'} >
                   <Text
                     my={'1em'}
                     sx={{

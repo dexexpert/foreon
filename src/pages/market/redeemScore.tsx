@@ -5,7 +5,7 @@ import Overview from '@/components/market/overview';
 import FooterAsset from '@/components/micro/footerAsset';
 import BuyBlock from '@/components/market/buyBlock';
 import Wallet from '@/components/main/wallet';
-import WalletDeposit from '@/components/wallet';
+import WalletDeposit from '@/components/walletDeposit';
 import AuthHeader from '@/components/major/authHeader';
 import { useDisclosure } from '@mantine/hooks';
 import {SellBlock} from "@/components/market/sellcrypto";
@@ -27,7 +27,7 @@ const RedeemScore = () => {
           header: { display: 'none' },
         }}
       >
-        <Wallet />
+        <Wallet closeWallet={close}/>
       </Drawer>
 
 

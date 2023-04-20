@@ -4,18 +4,19 @@ import ContainerLayout from "@/layouts/containerLayout";
 
 const WalletPredictions =() => {
   const elements = [
-    { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' , payout: '10 ADA' },
-
-
+    {name:1, trade: 'yes', price: '25 ADA', shares: '589.12',  payout: '700 ADA' },
+    {name:2, trade: 'yes', price: '25 ADA', shares: '589.12',  payout: '700 ADA' },
+    {name:3, trade: 'yes', price: '25 ADA', shares: '589.12',  payout: '700 ADA' },
+    {name:4, trade: 'yes', price: '25 ADA', shares: '589.12',  payout: '700 ADA' },
+    {name:5, trade: 'yes', price: '25 ADA', shares: '589.12',  payout: '700 ADA' },
 
   ];
 
   const rows = elements.map((element) => (
     <tr key={element.name}>
-      <td>{element.position}</td>
-      <td>{element.name}</td>
-      <td>{element.symbol}</td>
-      <td>{element.mass}</td>
+      <td>{element.trade}</td>
+      <td>{element.price}</td>
+      <td>{element.shares}</td>
       <td>{element.payout}</td>
     </tr>
   ));
@@ -30,7 +31,7 @@ const WalletPredictions =() => {
        padding: '1.5em 0'
      }}>
 
-       <Flex justify={'center'} gap={'1em'}>
+       {/* <Flex justify={'center'} gap={'1em'}>
          <Button w={'105px'} bg={'none'} h={'36px'}
                  sx={
                    {
@@ -59,14 +60,13 @@ const WalletPredictions =() => {
                  }>
            <Text>History</Text>
          </Button>
-       </Flex>
+       </Flex> */}
 
       <ContainerLayout>
-        <Table my={'2em'}>
+        <Table my={'2em'} verticalSpacing="sm" fontSize="md">
           <thead>
           <tr>
-            <th>Market</th>
-            <th>Position</th>
+            <th>Trade</th>
             <th>Price</th>
             <th>Shares</th>
             <th>Payout</th>

@@ -86,10 +86,10 @@ const Features = () => {
             <Flex gap={'2em'} my={'5em'} wrap={'wrap'} justify={'center'}>
               {
                 // @ts-ignore
-                coreInfos.map(({ title, bg, text, image }) => {
+                coreInfos.map(({ title, bg, text, image }, index) => {
                   return (
                     <>
-                      <CoreItems color={bg} title={title} image={image}>
+                      <CoreItems key={index} color={bg} title={title} image={image}>
                         {text}
                       </CoreItems>
                     </>
