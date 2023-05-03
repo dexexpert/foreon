@@ -20,7 +20,7 @@ const scaleY = {
   common: { transformOrigin: 'top' },
   transitionProperty: 'transform, opacity',
 };
-const Market = () => {
+const Culture = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [showSlowComponent, setShowSlowComponent] = useState(false);
   const [grandchildData, setGrandchildData] = useState('');
@@ -32,6 +32,7 @@ const Market = () => {
     if(showSlowComponent == false){
       setShowSlowComponent(true);
     } else setShowSlowComponent(false);
+    
   }
 
   // function handleGrandchildClick({data}:any) {
@@ -82,7 +83,7 @@ const Market = () => {
           </Suspense>
         }
           <ContainerLayout>
-            <Predictions category='ALL' />
+            <Predictions category={'POP CULTURE'}/>
           </ContainerLayout>  
         </Flex>
         
@@ -98,4 +99,4 @@ const Market = () => {
   );
 };
 
-export default Market;
+export default Culture;

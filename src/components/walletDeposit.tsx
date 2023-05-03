@@ -68,7 +68,7 @@ const WalletDeposit:React.FC<closeDeposit> = (props) => {
         
         
         <Text color={'#fff'} className={'duplicate'} size={'25px'}>
-          Deposite
+          Deposit
         </Text>
       </Box>
       <ContainerLayout>

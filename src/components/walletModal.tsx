@@ -6,24 +6,43 @@ import {ReactNode} from "react";
 
 interface Props {
   isOpen: any,
-  onClose: any
+  onClose: any,
+  isConnected?: any,
+  connect?: any
+  
 }
 
-const WalletModal = ({isOpen, onClose}: Props) => {
+const WalletModal = ({isOpen, onClose, isConnected, connect}: Props) => {
   const [opened, { open, close }] = useDisclosure(false);
   const locateNexte = useRouter();
+  const connectState = () => {
+    if(connect == false){
+      isConnected(true);
+      
+      
+    } else{
+      onClose();
+      
+    }
+    
+    
+  }
      
   return (
     <>
-      <Modal opened={isOpen} onClose={onClose} title="Get started on Foreon"  centered>
+    {/* mantine-Modal-close */}
+      <Modal opened={isOpen} onClose={onClose} title="Get started on Foreon"  centered 
+        transitionProps={{ transition: 'fade', duration: 600, timingFunction: 'linear' }}
+        
+        >
+          {/* <Modal.CloseButton/> */}
         <Text color={'grey'}  size={'15px'}>By connection your wallet, you agree to our <br/>
           <Flex>
             <Text color={'blue'}  size={'15px'} px={'0.5em'}>Terms of Service</Text> & <Text px={'0.5em'} color={'blue'}  size={'15px'} >Privacy Policy</Text>
           </Flex>
-          
         </Text>
         <Flex direction={'column'} >
-          <Button sx={{background:'white',width:'100%'}}  py={'2em'} my={'1em'} >
+          <Button sx={{background:'white',width:'100%'}}    py={'2em'} my={'1em'} onClick={connectState} >
             <div style={{width:'20%'}}>
               <Image
                   height={50}
@@ -40,7 +59,7 @@ const WalletModal = ({isOpen, onClose}: Props) => {
               
           </Button>
           
-          <Button sx={{background:'white',width:'100%'}}   py={'2em'} my={'1em'} >
+          <Button sx={{background:'white',width:'100%'}}   py={'2em'} my={'1em'} onClick={connectState} >
             <div style={{width:'20%'}}>
               <Image
                   height={50}
@@ -56,7 +75,8 @@ const WalletModal = ({isOpen, onClose}: Props) => {
             </div>
               
           </Button>
-          <Button sx={{background:'white',width:'100%'}}  py={'2em'} my={'1em'}>
+
+          <Button sx={{background:'white',width:'100%'}}  py={'2em'} my={'1em'} onClick={connectState}>
             <div style={{width:'20%'}}>
               <Image
                   px={'0.5em'}

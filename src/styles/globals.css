@@ -128,7 +128,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #79767a;
+  /* color: #79767a; */
+  color: black;
   font-family: 'DM Sans', sans-serif !important;
 }
 
@@ -219,6 +220,17 @@ body {
 .mantine-11r41z1 .mantine-u9j1uq{
   max-width: 86rem;
 }
+.mantine-1hher0m{
+  border-bottom: 0.25rem solid transparent ;
+}
+.mantine-o1857a{
+  min-height: 3.25rem;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* 'DM Sans', sans-serif !important */
 
 /* .mantine-Container-root.mantine-u9j1uq{
   padding-left: 1rem;
@@ -226,7 +238,9 @@ body {
   margin-left: auto;
   margin-right: auto;
 } */
-
+/* .mantine-1hher0m[data-active] {
+  border: '5px solid blue' !important
+} */
 @keyframes mymove {
   from {left: -300px;}
   to {left: 0px;}

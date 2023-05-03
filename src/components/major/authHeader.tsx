@@ -99,10 +99,10 @@ const navsConnected = [
   
 ];
 
-const AuthHeader = ({handleEvent}: any) => {
+const AuthHeader = ({handleEvent, connect}: any) => {
   const [sidebarOpen, setSidebarOpen] = useState(false); // state to track whether sidebar is open
   const sidebarRef = useRef(null);
-  const [connect, setConnect] = useState(false);
+  // const [connect, setConnect] = useState(false);
 
   
 
@@ -114,19 +114,19 @@ const AuthHeader = ({handleEvent}: any) => {
     setSidebarOpen(!sidebarOpen); // toggle sidebar state
   };
 
-  const addNavItem = () => {
-    console.log("hoemconnected")
-    if(connect == false){
-      // navs.splice(0,1, {
-      //   title: 'Market',
-      //   path: '/market',
-      // });
-      // navs.splice(2,1);
-      // navs.splice(3,1);   
-      setConnect(true); 
-    }
+  // const addNavItem = () => {
+  //   console.log("hoemconnected")
+  //   if(connect == false){
+  //     // navs.splice(0,1, {
+  //     //   title: 'Market',
+  //     //   path: '/market',
+  //     // });
+  //     // navs.splice(2,1);
+  //     // navs.splice(3,1);   
+  //     setConnect(true); 
+  //   }
     
-  }
+  // }
 
   const [hover, setHover] = useState<string>('none');
 
@@ -140,15 +140,15 @@ const AuthHeader = ({handleEvent}: any) => {
         setSidebarOpen(false);
         
       }
-      if(connect == false){
-        // navs.splice(0,1, {
-        //   title: 'Market',
-        //   path: '/market',
-        // });
-        // navs.splice(2,1);
-        // navs.splice(3,1);   
-        setConnect(true); 
-      }
+      // if(connect == false){
+      //   // navs.splice(0,1, {
+      //   //   title: 'Market',
+      //   //   path: '/market',
+      //   // });
+      //   // navs.splice(2,1);
+      //   // navs.splice(3,1);   
+      //   setConnect(true); 
+      // }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -188,9 +188,11 @@ const AuthHeader = ({handleEvent}: any) => {
 
                 <Flex align={'center'} gap={'1em'}>
                   
-                  <Box onClick={handleEvent}>
+                  <Box onClick={handleEvent}> 
                     
-                    <HomeConnectedButton>addr24..76</HomeConnectedButton>
+                  {connect ? <HomeConnectedButton>addrr242...8876</HomeConnectedButton>:
+                    <ButtonInterface> Connect wallet </ButtonInterface>
+                    }
                     
                   </Box>
                   <Box>
@@ -321,7 +323,7 @@ const AuthHeader = ({handleEvent}: any) => {
                   <Box onClick={handleEvent}>
                     
                   {connect ? <HomeConnectedButton>addrr242...8876</HomeConnectedButton>:
-                    <ButtonInterface> Connect wallet </ButtonInterface>
+                    <ButtonInterface > Connect wallet </ButtonInterface>
                     }
                     
                   </Box>

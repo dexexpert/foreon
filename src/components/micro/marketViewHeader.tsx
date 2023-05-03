@@ -1,5 +1,5 @@
 import {useState, useRef, useEffect} from 'react';
-import {Box, Text, Flex,Button, Image} from '@mantine/core';
+import {Box, Text, Flex,Button, Image,Popover,Checkbox} from '@mantine/core';
 import ContainerLayout from "@/layouts/containerLayout";
 import {useMediaQuery} from "@mantine/hooks";
 import {BsStar,BsFillCheckCircleFill,BsShare} from 'react-icons/bs';
@@ -22,9 +22,15 @@ const liquidityIcon = <svg width="30" height="30" viewBox="0 0 30 30" fill="none
 
 const MarketViewHeader = () => {
   const [watchlist, setWatchlist] = useState(false);
+  const [opened, setOpened] = useState(false);
   const matches = useMediaQuery('(max-width: 40em)', true, {getInitialValueInEffect: false});
   const changeState = () => {
-    setWatchlist(true);
+    if(watchlist == false){
+      setWatchlist(true)
+    }else{
+      setWatchlist(false);
+    }
+    
   }
 
 
@@ -126,21 +132,84 @@ const MarketViewHeader = () => {
               <Text color={'#22005D'}>Add to Watchlist</Text>
             </Button>
 
-            <Button 
-                className={'btnColor'}
-                  sx={
+           
+                  <Popover  opened={opened} onChange={setOpened} width={150} trapFocus position="left-start" withArrow shadow="md">
+                    <Popover.Target>
+                    <Button className={'btnColor'}px={'1.5em'} py={'1.5em'} variant="default"  onClick={() => setOpened((o) => !o)} sx={
                       {
                           borderRadius:'10px',
                           color: 'black !important',
                           fontSize: '16px',
                           // overflow:'inherit !important'
                       }
-                  }
-
-                px={'1.5em'} py={'1.5em'} variant="default">
-              <BsShare/>
+                  }><BsShare/></Button>
+                    </Popover.Target>
+                    {/* {!showPopover && ( */}
+                      <Popover.Dropdown  sx={(theme) => ({ background: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white })}>
+                        <Flex direction="column">
+                        <Flex direction="column">
+                            <Text className={'duplicate'}
+                                  sx={{
+                                    color: '#22005D',
+                                    margin: '0.7em 0',
+                                    cursor: 'pointer'
+                                  }} 
+                                  fw={700} color={'#000'} size={18}>Twitter</Text>
+                          
+                        </Flex>
+                        
+                        </Flex>
+                    
+                        <Flex direction="column">
+                            <Text className={'duplicate'}
+                                  sx={{
+                                    color: '#22005D',
+                                    margin: '0.7em 0',
+                                    cursor: 'pointer'
+                                  }} 
+                                  fw={700} color={'#000'} size={18}>Discord</Text>
+                          
+                        </Flex>
+      
+                        <Flex direction="column">
+                            <Text className={'duplicate'}
+                                  sx={{
+                                    color: '#22005D',
+                                    margin: '0.7em 0',
+                                    cursor: 'pointer'
+                                  }} 
+                                  fw={700} color={'#000'} size={18}>Medium</Text>
+                          
+                        </Flex>
+                        <Flex direction="column">
+                            <Text className={'duplicate'}
+                                  sx={{
+                                    color: '#22005D',
+                                    margin: '0.7em 0',
+                                    cursor: 'pointer'
+                                  }} 
+                                  fw={700} color={'#000'} size={18}>Telegram</Text>
+                          
+                        </Flex>
+      
+                        <Flex direction="column">
+                            <Text className={'duplicate'}
+                                  sx={{
+                                    color: '#22005D',
+                                    margin: '0.7em 0',
+                                    cursor: 'pointer'
+                                  }} 
+                                  fw={700} color={'#000'} size={18}>Raddit</Text>
+                          
+                        </Flex>
+                      
+                  </Popover.Dropdown>
+              {/* )} */}
               
-            </Button>
+              
+            </Popover>
+              
+
 
 
             
@@ -203,7 +272,7 @@ const MarketViewHeader = () => {
                 {liquidityIcon}
 
                 <Box>
-                  <Text color={'#fff'}>Volumn</Text>
+                  <Text color={'#fff'}>Volume</Text>
                   <Text color={'#fff'} size={!matches ? '28px' : '20px'} weight={'bold'}>12,056 ADA</Text>
                 </Box>
               </Flex>

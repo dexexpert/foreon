@@ -176,7 +176,7 @@ const PredictionData = () => {
 
           <Flex gap={'1em'}>
             <Box>
-              <Text size={'14px'}>Volumn</Text>
+              <Text size={'14px'}>Volume</Text>
               <Text color={'#000'} weight={'bold'} size={'20px'}>12, 056 ADA</Text>
             </Box>
 

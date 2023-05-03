@@ -5,6 +5,9 @@ interface  FilterData {
   state: string,
   path: string
 }
+
+
+
 export const filterData: FilterData[] =[
   {
     name: 'All',
@@ -25,7 +28,7 @@ export const filterData: FilterData[] =[
   {
     name: 'Sports',
     state: '',
-    path: '/Sports'
+    path: '/sports'
   },
   {
     name: 'Politics',
@@ -70,7 +73,7 @@ export const listData: FilterData[] =[
     path: '/science'
   },
   {
-    name: 'Volumn',
+    name: 'Volume',
     state: '',
     path: '/all'
   },

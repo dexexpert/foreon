@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Button, Drawer } from '@mantine/core';
+import { Box, Flex, Text, Button, Drawer, Image } from '@mantine/core';
 import { BiWalletAlt, BiCopy } from 'react-icons/bi';
 import ContainerLayout from '@/layouts/containerLayout';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
@@ -168,10 +168,20 @@ const Wallet:React.FC<closeWallet> = (props) => {
                 justifyContent: 'center',
               }}
             >
-              <Text color={'#fff'}>
+              {/* <Text color={'#fff'}>
                 {' '}
                 <BsPower fill={'red'} /> Diconnect Wallet{' '}
-              </Text>
+              </Text> */}
+              
+                <Flex
+                  gap={'0.3em'}
+                  align={'center'}
+                  p={'0.2em 0.3em'}
+                 
+                >
+                  <BsPower  fill={'red'}/> <Text  color={'#fff'}>Disconnect Wallet</Text>
+                </Flex>
+              
             </Box>
           </Flex>
 
@@ -279,7 +289,18 @@ const Wallet:React.FC<closeWallet> = (props) => {
                   'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%)'
                 }
               >
-                <Text color={'#fff'}>Deposite</Text>
+                <Image
+                    sx={{
+                      margin:'10px'
+                    }}
+                    height={17}
+                    width={17}
+                    alt={'Logo'}
+                    src={
+                      'https://res.cloudinary.com/du59y8tjp/image/upload/v1682136046/money-recive_v2ywav.png'
+                    }
+                  />
+                <Text color={'#fff'}>Deposit</Text>
               </Button>
               <Button
                 color={'black'}
@@ -290,15 +311,38 @@ const Wallet:React.FC<closeWallet> = (props) => {
                   borderRadius: '16px',
                   height: '52px',
                   border: '1px solid blue',
+                  alignItems:'center',
+                  justifyContent:'center',
                   '&:hover': {
                     background: 'red',
                   },
                 }}
                 onClick={onOpen}
               >
-                <Text color={'#000'}>
+                {/* <Text color={'#000'}>
                   <AiOutlineDollar /> Withdraw
-                </Text>
+                </Text> */}
+                <Flex
+                  gap={'0.3em'}
+                  align={'center'}
+                  p={'0.3em 0.5em'}
+                  justify={'center'}
+                 
+                >
+                  <Image
+                    sx={{
+                      margin:'10px'
+                    }}
+                    height={17}
+                    width={17}
+                    alt={'Logo'}
+                    src={
+                      'https://res.cloudinary.com/du59y8tjp/image/upload/v1682136112/money-send_hngowz.png'
+                    }
+                  />
+                  {/* <AiOutlineDollar  size={17}/> */}
+                   <Text  color={'#000'}>Withdraw</Text>
+                </Flex>
               </Button>
             </Flex>
           </Box>

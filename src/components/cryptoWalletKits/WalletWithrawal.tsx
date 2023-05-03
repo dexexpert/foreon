@@ -33,7 +33,7 @@ const WalletWithdrawal:React.FC<closeWithrawal> = (props) => {
     </SuccessModal>
 
 
-  const errorModal =  <ErrorModal onClose={close} isOpen={onError} title={'Transaction Successful'}>
+  const errorModal =  <ErrorModal onClose={close} isOpen={onError} title={'Transaction infu'}>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit
   </ErrorModal>
 

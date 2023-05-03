@@ -83,7 +83,7 @@ const MarketAddress =()=> {
 
           <Box>
             <Text weight={'bold'} color={'#22005D'}>Resolution Source</Text>
-            <Text>https://www.naijadaily...</Text>
+            <Text> https://orcfax.io/........</Text>
           </Box>
 
         </Flex>

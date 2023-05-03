@@ -15,7 +15,7 @@ const maxButton = <Button bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 4
 const BuyBlock = () => {
   const [opened, setOpened] = useState(false);
   // const [opened, { close, open }] = useDisclosure(false);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(true);
   return (
     <>
       <ContainerLayout>

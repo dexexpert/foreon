@@ -16,6 +16,7 @@ import {FaDiscord, FaSearch} from 'react-icons/fa';
 import Next from 'next/image';
 import AuthHeader from '@/components/major/authHeader';
 import {useRouter} from 'next/navigation';
+import {useState, useRef, useEffect} from 'react';
 
 import { useDisclosure } from '@mantine/hooks';
 import WalletModal from '../walletModal';
@@ -112,10 +113,11 @@ const IndexHero = () => {
   const router = useRouter();
   const [opened, { open, close }] = useDisclosure(false);
   const routeHeader = () => router.push('/market');
+  const [connect, setConnect] = useState(false); 
 
   return (
     <>
-      <WalletModal onClose={close} isOpen={opened} />
+      <WalletModal onClose={close} isOpen={opened} isConnected={(v:boolean) => {setConnect(v); close()}} connect={connect} />
       <Box
         sx={{
           position: 'relative',
@@ -127,7 +129,7 @@ const IndexHero = () => {
           pb={'2em'}
           src="https://res.cloudinary.com/dhdqt4xwu/image/upload/v1679502764/foreon/Hero_nttpfc.png"
         >
-          <AuthHeader handleEvent={open}/>
+          <AuthHeader handleEvent={open} connect={connect}/>
 
           <ContainerLayout>
             <Flex

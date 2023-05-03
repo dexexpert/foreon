@@ -20,7 +20,6 @@ const ViewMarket = () => {
   const myRef = useRef(null);
   const [closeDrawer, setCloseDrawer] = useState(true);
   const [tabColor, setTabColor] = useState(false);
-  const [selected, setSelected] = useState(true);
 
   const closeClick = () => {
     if(closeDrawer == true){
@@ -35,8 +34,15 @@ const ViewMarket = () => {
     if(tabColor == false){
       setTabColor(true);
       console.log("changing selll");
-    }else 
-      setTabColor(false); 
+      return;
+    }else if(tabColor == true){
+      setTabColor(false);
+      console.log("changing fsasdf")
+      return;
+    }
+      
+    
+    
   }
 
   return (
@@ -99,26 +105,14 @@ const ViewMarket = () => {
           }}
         >
           <Tabs my={'1.6em'} defaultValue={'first'}>
-
-            {selected ? 
-              <Tabs.List grow>
-                <Tabs.Tab value="first" onClick={()=> setSelected(true)}>
-                  <Text className={'duplicate'} size={'20px'} c={'black'}  >Buy</Text>
-                </Tabs.Tab>
-                <Tabs.Tab value="second" color="blue" onClick={()=> setSelected(false)}>
-                  <Text className={'duplicate'} size={'20px'} c={'grey'} >Sell</Text>
-                </Tabs.Tab>
-              </Tabs.List>
-              :
-              <Tabs.List grow>
-                <Tabs.Tab value="first" onClick={()=> setSelected(true)} >
-                  <Text className={'duplicate'} size={'20px'} c={'grey'} >Buy</Text>
-                </Tabs.Tab>
-                <Tabs.Tab value="second" color="blue" onClick={()=> setSelected(false)}>
-                  <Text className={'duplicate'} size={'20px'} c={'black'} >Sell</Text>
-                </Tabs.Tab>
-              </Tabs.List>
-              }
+            <Tabs.List grow>
+              <Tabs.Tab value="first">
+                <Text className={'duplicate'} size={'20px'} c={tabColor ? 'grey' : 'black'} onClick={changeTabColor} >Buy</Text>
+              </Tabs.Tab>
+              <Tabs.Tab value="second" color="blue">
+                <Text className={'duplicate'} size={'20px'} c={tabColor ? 'black' : 'grey'} onClick={changeTabColor}>Sell</Text>
+              </Tabs.Tab>
+            </Tabs.List>
 
             <Tabs.Panel value="first" pt="xs">
               <BuyBlock />

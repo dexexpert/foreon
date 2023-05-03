@@ -1,9 +1,10 @@
-import {Box, Flex, Button, Text, TextInput} from '@mantine/core';
+import {Box, Flex, Button, Text, TextInput,Select} from '@mantine/core';
 import ContainerLayout from '@/layouts/containerLayout';
 import {FilterButton, FilterSearchBox} from '@/components/market/filterKits';
 import {filterData} from '@/utils/datas';
 import {useRouter} from 'next/router';
 import {useMediaQuery} from "@mantine/hooks";
+import {IoMdArrowDropdown} from 'react-icons/io';
 
 const searchIcon = <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
@@ -79,9 +80,20 @@ const FilterTop:React.FC<Buttonprops> = (props) => {
               >
                 <FilterButton  handleClick={props.handleClick}/>
 
-                <select style={{color: 'black', fontWeight: 'medium'}} className={'foreon-select'}>
+                {/* <select style={{color: 'black', fontWeight: 'medium'}} className={'foreon-select'}>
                   <option>Liquidity</option>
-                </select>
+                  
+                </select> */}
+                <Select
+                  
+                  // className={'foreon-select'}
+                  sx={{width:'135px', height:'52px', color: 'black'}}
+                  defaultValue="Liquidity"
+                  data={['Liquidity', 'Farm']}
+                  radius="xl"
+                  rightSection={<IoMdArrowDropdown size="1.5rem" />}
+                  styles={{ rightSection: { pointerEvents: 'none' } }}
+                />
               </Flex>
 
               <Box bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 47.36%, #9F00BE 95.53%)'}
@@ -109,19 +121,22 @@ const FilterTop:React.FC<Buttonprops> = (props) => {
                     const pathMatch = route.pathname === items.path;
                     return (
                       <>
+                      <a href={items.path}>
                         <Button
-                          key={index}
-                          bg={'none'}
-                          
-                          className={pathMatch ? 'btn-grade' : 'btn-normal'}
-                          sx={{
-                            borderRadius: '80px',
-                          }}
-                        >
-                          <Text color={pathMatch ? 'white' : ''}>
-                            {items.name}
-                          </Text>
-                        </Button>
+                            key={index}
+                            bg={'none'}
+                            
+                            className={pathMatch ? 'btn-grade' : 'btn-normal'}
+                            sx={{
+                              borderRadius: '80px',
+                            }}
+                          >
+                            <Text color={pathMatch ? 'white' : ''}>
+                              {items.name}
+                            </Text>
+                          </Button>
+                      </a>
+                        
                       </>
                     );
                   })}

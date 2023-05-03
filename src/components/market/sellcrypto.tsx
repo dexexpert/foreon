@@ -13,7 +13,7 @@ const maxButton = <Button bg={'linear-gradient(135deg, #00A9B7 -1.33%, #4C32F2 4
 
 export const SellBlock = () => {
   const [opened, setOpened] = useState(false);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(true);
   return (
     <>
       <ContainerLayout>
@@ -23,18 +23,18 @@ export const SellBlock = () => {
           {selected ? 
               <Flex gap={'1em'} my={'0.5em'} justify={'space-between'}>
                   {/*@ts-ignore*/}
-                <Buttons variant="white" color={'#fff'} bg={'#219653'} w={'177px'} h={'45px'} onClick={()=> setSelected(true)}>Buy Yes 40 ADA</Buttons>
+                <Buttons variant="white" color={'#fff'} bg={'#219653'} w={'177px'} h={'45px'} onClick={()=> setSelected(true)}>Sell Yes 40 ADA</Buttons>
                 {/*@ts-ignore*/}
-                <Buttons variant="white" color={'#000'} bg={'#F4EFF4'}  w={'177px'} h={'45px'} onClick={() => setSelected(false)}>Buy No  20 ADA</Buttons>
+                <Buttons variant="white" color={'#000'} bg={'#F4EFF4'}  w={'177px'} h={'45px'} onClick={() => setSelected(false)}>Sell No  20 ADA</Buttons>
               </Flex>
             
               :
 
               <Flex gap={'1em'} my={'0.5em'} justify={'space-between'}>
                   {/*@ts-ignore*/}
-                <Buttons  variant="white" color={'#fff'} bg={'#F4EFF4'} w={'177px'} h={'45px'} onClick={()=> setSelected(true)}>Buy Yes 40 ADA</Buttons>
+                <Buttons  variant="white" color={'#fff'} bg={'#F4EFF4'} w={'177px'} h={'45px'} onClick={()=> setSelected(true)}>Sell Yes 40 ADA</Buttons>
                 {/*@ts-ignore*/}
-                <Buttons variant="white" color={'#000'} bg={'red'}  w={'177px'} h={'45px'} onClick={() => setSelected(false)}>Buy No  20 ADA</Buttons>
+                <Buttons variant="white" color={'#000'} bg={'red'}  w={'177px'} h={'45px'} onClick={() => setSelected(false)}>Sell No  20 ADA</Buttons>
               </Flex>
           }
 

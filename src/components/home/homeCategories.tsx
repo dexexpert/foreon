@@ -2,9 +2,22 @@ import ContainerLayout from "@/layouts/containerLayout";
 import {Box, Flex, Button, Text} from '@mantine/core'
 import MarketBox from "@/components/market/marketBox";
 import {HomeTab} from "@/components/micro/homeTab";
+import {mkData} from '@/utils/marketData';
 
-const maketList = [1, 2, 3, 5, 6, 7].map(() => {
-  return <Box key={''}> <MarketBox/></Box>
+
+
+
+
+
+
+const maketList = mkData.filter((item, idx) => idx < 6).map((items, index) => {
+    // if(index < 7){
+      console.log("index", index)
+      return <Box key={index} > 
+            <MarketBox avatar={items.avatar} cate={items.cate} title={items.title} yes$={items.yes$} no$={items.no$} volume={items.volume} liquidity={items.liquidity}/> 
+          </Box>
+    // }
+  
 })
 
 const HomeCategories = () => {
@@ -41,14 +54,16 @@ const HomeCategories = () => {
 
 
           <Flex my={'3em'} justify={'center'}>
-            <Button className={'global-btn-color'} w={'165px'} h={'52px'}
-                    sx={
-                      {
-                        borderRadius: '15px'
-                      }
-                    }>
-              <Text color={'#fff'}>See All Market</Text>
-            </Button>
+            <a href={'/market'}>
+              <Button className={'global-btn-color'} w={'165px'} h={'52px'}
+                      sx={
+                        {
+                          borderRadius: '15px'
+                        }
+                      }>
+                <Text color={'#fff'}>See All Market</Text>
+              </Button>
+            </a>
           </Flex>
 
 

@@ -1,4 +1,4 @@
-import { Box, Flex, Title, Center, Text } from '@mantine/core';
+import { Box, Flex, Title, Center, Text, Image } from '@mantine/core';
 import { FiBook } from 'react-icons/fi';
 import { FaStar } from 'react-icons/fa';
 import { IoMdStats } from 'react-icons/io';
@@ -28,7 +28,7 @@ const liquidityIcon  = <svg width="23" height="23" viewBox="0 0 16 16" fill="non
   </defs>
 </svg>
 
-const volumn = <svg width="23" height="23" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+const volume = <svg width="23" height="23" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clipPath="url(#clip0_6_179)">
     <path d="M5 8.00008H6.33333V11.0001H5V8.00008ZM9.66667 6.66675H11V11.0001H9.66667V6.66675ZM7.33333 4.66675H8.66667V11.0001H7.33333V4.66675Z" fill="black"/>
   </g>
@@ -40,7 +40,17 @@ const volumn = <svg width="23" height="23" viewBox="0 0 16 16" fill="none" xmlns
   </defs>
 </svg>
 
-const MarketBox = () => {
+interface Props {
+  avatar:string;
+  cate: string;
+  title: string;
+  yes$:number;
+  no$:number;
+  volume:string;
+  liquidity: string;
+}
+
+const MarketBox: React.FC<Props> = ({avatar, cate, title,yes$, no$, volume,liquidity}) => {
   return (
     <>
       <Link href={'/market/overview'} className={'remove-link'}>
@@ -74,18 +84,30 @@ const MarketBox = () => {
               }}
             >
               <Box
-                w="85%"
-                h="85%"
+                w="93%"
+                h="93%"
                 sx={{
                   borderRadius: '50%',
                   zIndex: 1,
                   backgroundSize: 'contain',
                   backgroundPosition: 'center',
                   backgroudRepeat: 'no-repeat',
-                  background:
-                    'url(https://res.cloudinary.com/dhkccnvyn/image/upload/v1678523435/mailchimp-KR0WW6bjtt0-unsplash_xdl4fl.jpg)',
+                  // background:
+                  //   'url(https://res.cloudinary.com/dhkccnvyn/image/upload/v1678523435/mailchimp-KR0WW6bjtt0-unsplash_xdl4fl.jpg)',
                 }}
-              ></Box>
+              >
+                <Image
+                  // sx={{
+                  //   margin:'10px'
+                  // }}
+                  height={'100%'}
+                  width={'100%'}
+                  alt={'Logo'}
+                  src={
+                    avatar
+                  }
+                />
+              </Box>
             </Box>
           </Box>
 
@@ -120,10 +142,11 @@ const MarketBox = () => {
               </Box>
             </Flex>
 
-            <Text size={'12px'} weight={'bold'} color={'#22005D'}>BUSINESS</Text>
+            <Text size={'12px'} weight={'bold'} color={'#22005D'}>{cate}</Text>
 
             <Title color={'#000'} my={'0.2em'} size={'26px'}>
-              Import duty to increase in Q2
+              {/* Import duty to increase in Q2 */}
+              {title}
             </Title>
 
             <Flex my={'1.5em'} gap={'1em'}>
@@ -152,7 +175,7 @@ const MarketBox = () => {
                     align={'center'}
                     color={'#219653'}
                   >
-                    Yes $40
+                    Yes {yes$}
                   </Text>
                 </Box>
               </Box>
@@ -181,7 +204,7 @@ const MarketBox = () => {
                     align={'center'}
                     color={'#DE3730'}
                   >
-                    No $20
+                    No {no$}
                   </Text>
                 </Box>
               </Box>
@@ -190,12 +213,12 @@ const MarketBox = () => {
             <Flex display={'flex'} justify={'space-between'}>
               <Flex align={'center'} gap={'0.45em'}>
 
-                {volumn}
+                {volume}
 
                 <Box>
-                  <Text size={'14px'}>Volumn</Text>
+                  <Text size={'14px'}>Volume</Text>
                   <Text size={'21px'} weight={'bolder'} color={'black'}>
-                    12, 056
+                    {volume}
                   </Text>
                 </Box>
               </Flex>
@@ -207,7 +230,7 @@ const MarketBox = () => {
                 <Box>
                   <Text size={'14px'}>Liquidity</Text>
                   <Text size={'21px'} weight={'bolder'} color={'black'}>
-                    12, 056
+                    {liquidity}
                   </Text>
                 </Box>
               </Flex>
