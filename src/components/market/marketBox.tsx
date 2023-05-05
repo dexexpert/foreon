@@ -28,7 +28,7 @@ const liquidityIcon  = <svg width="23" height="23" viewBox="0 0 16 16" fill="non
   </defs>
 </svg>
 
-const volume = <svg width="23" height="23" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+const volumeIcon = <svg width="23" height="23" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clipPath="url(#clip0_6_179)">
     <path d="M5 8.00008H6.33333V11.0001H5V8.00008ZM9.66667 6.66675H11V11.0001H9.66667V6.66675ZM7.33333 4.66675H8.66667V11.0001H7.33333V4.66675Z" fill="black"/>
   </g>
@@ -213,7 +213,7 @@ const MarketBox: React.FC<Props> = ({avatar, cate, title,yes$, no$, volume,liqui
             <Flex display={'flex'} justify={'space-between'}>
               <Flex align={'center'} gap={'0.45em'}>
 
-                {volume}
+                {volumeIcon}
 
                 <Box>
                   <Text size={'14px'}>Volume</Text>

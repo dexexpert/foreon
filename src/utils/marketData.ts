@@ -21,8 +21,8 @@ export const mkData: MarketData[] =[
     title: 'Import duty to increase in Q2',
     yes$: 40,
     no$: 20,
-    volume: '12,056',
-    liquidity: '9,056 ',
+    volume: '12,056ADA',
+    liquidity: '9,056ADA ',
   },
 
   {
@@ -32,19 +32,19 @@ export const mkData: MarketData[] =[
     title: 'United Kingdom to win Arsenal',
     yes$: 30,
     no$: 50,
-    volume: '50,056',
-    liquidity: '70,126',
+    volume: '50,056ADA',
+    liquidity: '70,126ADA',
   },
   
   {
     no:3,
     avatar:'https://res.cloudinary.com/du59y8tjp/image/upload/v1682256328/Ellipse_135_iv4fkn.png',
     cate: 'CRYPTO',
-    title: 'YOU BTC to get to $20,000!',
+    title: 'BTC to get to $20,000!',
     yes$: 30,
     no$: 50,
-    volume: '12,056',
-    liquidity: '9,056 ',
+    volume: '12,056ADA',
+    liquidity: '9,056ADA ',
   },
   
   {
@@ -54,8 +54,8 @@ export const mkData: MarketData[] =[
     title: 'Sound City MVP awards ',
     yes$: 40,
     no$: 20,
-    volume: '12,056',
-    liquidity: '9,056 ',
+    volume: '12,056ADA',
+    liquidity: '9,056ADA ',
   },
 
   {
@@ -65,8 +65,8 @@ export const mkData: MarketData[] =[
     title: 'Import duty to increase in Q2',
     yes$: 40,
     no$: 20,
-    volume: '12,056',
-    liquidity: '9,056 ',
+    volume: '12,056ADA',
+    liquidity: '9,056ADA ',
   },
 
   {
@@ -76,19 +76,19 @@ export const mkData: MarketData[] =[
     title: 'United Kingdom to win Arsenal',
     yes$: 30,
     no$: 50,
-    volume: '50,056',
-    liquidity: '70,126',
+    volume: '50,056ADA',
+    liquidity: '70,126ADA',
   },
   
   {
     no:7,
     avatar:'https://res.cloudinary.com/du59y8tjp/image/upload/v1682256328/Ellipse_135_iv4fkn.png',
     cate: 'CRYPTO',
-    title: 'YOU BTC to get to $20,000!',
+    title: 'BTC to get to $20,000!',
     yes$: 30,
     no$: 50,
-    volume: '12,056',
-    liquidity: '9,056 ',
+    volume: '12,056ADA',
+    liquidity: '9,056ADA ',
   },
   
   {
@@ -98,8 +98,8 @@ export const mkData: MarketData[] =[
     title: 'Sound City MVP awards ',
     yes$: 40,
     no$: 20,
-    volume: '12,056',
-    liquidity: '9,056 ',
+    volume: '12,056ADA',
+    liquidity: '9,056ADA ',
   },
 
   {
@@ -109,8 +109,8 @@ export const mkData: MarketData[] =[
     title: 'Sound City MVP awards ',
     yes$: 40,
     no$: 20,
-    volume: '12,056',
-    liquidity: '9,056 ',
+    volume: '12,056ADA',
+    liquidity: '9,056ADA ',
   }
 
 
